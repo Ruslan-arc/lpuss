@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Toshkent Real Vaqt</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+}
+
+.card{
+    width:420px;
+    padding:35px;
+    border-radius:20px;
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(15px);
+    text-align:center;
+    color:#fff;
+    box-shadow:0 15px 40px rgba(0,0,0,.4);
+}
+
+.city{
+    font-size:34px;
+    font-weight:bold;
+    margin-bottom:15px;
+    letter-spacing:2px;
+}
+
+.time{
+    font-size:65px;
+    font-weight:bold;
+    color:#00ffd5;
+    text-shadow:0 0 20px #00ffd5;
+    margin:20px 0;
+}
+
+.date{
+    font-size:22px;
+    color:#ddd;
+}
+
+.line{
+    width:100%;
+    height:2px;
+    background:rgba(255,255,255,.2);
+    margin:25px 0;
+}
+
+.zone{
+    color:#8ff;
+    font-size:18px;
+}
+</style>
+
+</head>
+<body>
+
+<div class="card">
+    <div class="city">📍 Toshkent</div>
+
+    <div class="time" id="clock">
+        00:00:00
+    </div>
+
+    <div class="date" id="date"></div>
+
+    <div class="line"></div>
+
+    <div class="zone">
+        Uzbekistan Standard Time (UTC +5)
+    </div>
+</div>
+
+<script>
+
+function updateClock(){
+
+    const now = new Date();
+
+    const time = new Intl.DateTimeFormat('uz-UZ',{
+        timeZone:'Asia/Tashkent',
+        hour:'2-digit',
+        minute:'2-digit',
+        second:'2-digit',
+        hour12:false
+    }).format(now);
+
+    const date = new Intl.DateTimeFormat('uz-UZ',{
+        timeZone:'Asia/Tashkent',
+        weekday:'long',
+        day:'numeric',
+        month:'long',
+        year:'numeric'
+    }).format(now);
+
+    document.getElementById("clock").innerHTML = time;
+    document.getElementById("date").innerHTML = date;
+
+}
+
+updateClock();
+setInterval(updateClock,1000);
+
+</script>
+
+</body>
+</html>
+https://github.com/Ruslan-arc/lpuss.git
